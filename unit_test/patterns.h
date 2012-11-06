@@ -1,5 +1,6 @@
 #include "math.h"
 #include "../patterns.h"
+using namespace patterns;
 
 /*
    vector<vector<unsigned>> data;
@@ -71,6 +72,16 @@ TEST(Patterns, SecondaryDiagonal)
     EXPECT_EQ(MainDiagonalLength(diagonal), 0);
     EXPECT_EQ(VerticalLength(diagonal), 2);
     EXPECT_EQ(HorizontalLength(diagonal), 2);
+
+    unsigned length;
+    EXPECT_EQ(ClusterType(diagonal, 2, length), t_secondary_diagonal);
+    EXPECT_EQ(length, 6);
+
+    Patterns< vector<vector<unsigned>> > pattern(data);
+    EXPECT_EQ(pattern.secondary_diagonal_cluster.size(), 1);
+    EXPECT_EQ(pattern.secondary_diagonal_length[0], 6);
+    EXPECT_EQ(pattern.unknown_cluster.size(), 0);
+
 }
 
 TEST(Patterns, MainDiagonal)
@@ -94,6 +105,15 @@ TEST(Patterns, MainDiagonal)
     EXPECT_EQ(MainDiagonalLength(diagonal), 10);
     EXPECT_EQ(VerticalLength(diagonal), 3);
     EXPECT_EQ(HorizontalLength(diagonal), 3);
+
+    unsigned length;
+    EXPECT_EQ(ClusterType(diagonal, 2, length), t_main_diagonal);
+    EXPECT_EQ(length, 10);
+
+    Patterns< vector<vector<unsigned>> > pattern(data);
+    EXPECT_EQ(pattern.main_diagonal_cluster.size(), 1);
+    EXPECT_EQ(pattern.main_diagonal_length[0], 10);
+    EXPECT_EQ(pattern.unknown_cluster.size(), 0);
 }
 
 TEST(Patterns, Horizontal)
@@ -115,6 +135,15 @@ TEST(Patterns, Horizontal)
     EXPECT_EQ(MainDiagonalLength(diagonal), 2);
     EXPECT_EQ(VerticalLength(diagonal), 2);
     EXPECT_EQ(HorizontalLength(diagonal), 10);
+
+    unsigned length;
+    EXPECT_EQ(ClusterType(diagonal, 2, length), t_horizontal);
+    EXPECT_EQ(length, 10);
+
+    Patterns< vector<vector<unsigned>> > pattern(data);
+    EXPECT_EQ(pattern.horizontal_cluster.size(), 1);
+    EXPECT_EQ(pattern.horizontal_length[0], 10);
+    EXPECT_EQ(pattern.unknown_cluster.size(), 0);
 }
 
 TEST(Patterns, Vetical)
@@ -136,4 +165,12 @@ TEST(Patterns, Vetical)
     EXPECT_EQ(MainDiagonalLength(diagonal), 0);
     EXPECT_EQ(VerticalLength(diagonal), 10);
     EXPECT_EQ(HorizontalLength(diagonal), 0);
+    unsigned length;
+    EXPECT_EQ(ClusterType(diagonal, 2, length), t_vertical);
+    EXPECT_EQ(length, 10);
+
+    Patterns< vector<vector<unsigned>> > pattern(data);
+    EXPECT_EQ(pattern.vertical_cluster.size(), 1);
+    EXPECT_EQ(pattern.vertical_length[0], 10);
+    EXPECT_EQ(pattern.unknown_cluster.size(), 0);
 }

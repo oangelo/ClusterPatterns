@@ -1,3 +1,4 @@
+namespace burn{
 template<class Type>
 PairsList Burn(Type data, unsigned i,unsigned j){
 
@@ -57,4 +58,5 @@ PairsList Paint(Type& data, unsigned i,unsigned j,unsigned color){
         data[i.first][i.second] = color; 
     }
     return cluster;
+}
 }

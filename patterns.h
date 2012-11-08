@@ -8,7 +8,10 @@
 
 namespace patterns{
 
+using namespace burn;
+
 enum PatternTypes {t_main_diagonal, t_secondary_diagonal, t_horizontal, t_vertical, t_none};
+
 //##################### Diagonal ###########################
 unsigned MainDiagonalLength(PairsList  cluster);
 unsigned SecondaryDiagonalLength(PairsList  cluster);
